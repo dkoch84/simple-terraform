@@ -10,7 +10,7 @@ location                         = "East US"
 rg_name                          = "aks_resources"
 
 # Kubernetes Cluster AKS
-aks_name                         = "aks-dank"
+aks_name                         = "aks-dank-prime"
 aks_dns_prefix                   = "dank8s"
 aks_sku_tier                     = "Free"
 node_resource_group              = "node_resources"
