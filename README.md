@@ -25,3 +25,5 @@ In azure portal, navigate to the hub vnet that was created. Click on DNS Servers
 Deploy the spoke, then a private cluster on top of it.
 
 Private clusters (and other Private Endpoint resources) make use of Azure's special DNS resolvers (`168.63.129.16`) and Private DNS Zones which can only be read by those special resolvers. Zones must be linked to vnets that need to use them, and AKS must be able to write records into the Zone so that it's nodes can find it's API server and join the cluster.
+
+Test
