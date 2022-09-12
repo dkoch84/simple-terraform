@@ -36,7 +36,9 @@ jobs:
         curl -L $(curl -s https://api.github.com/repos/Azure/kubelogin/releases/latest | jq -r ".assets[] | select(.name | test(\"linux-amd64.zip$\")) | .browser_download_url") -o kubelogin.zip
         unzip kubelogin.zip
         chmod +x bin/linux_amd64/kubelogin
-        mv bin/linux_amd64/kubelogin .
+        echo "$(find "$(pwd)" -name kubelogin | rev | cut -d '/' -f 2- | rev)" >> $GITHUB_PATH
+        echo "$(find "$(pwd)" -name kubelogin | rev | cut -d '/' -f 2- | rev)"
+        echo $PATH
         
     - name: kubectl stuff
       run: |
