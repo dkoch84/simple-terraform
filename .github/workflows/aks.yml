@@ -33,5 +33,5 @@ jobs:
         
     - name: kubectl stuff
       run: |
-        echo $KUBELOGIN
+        echo $KUBECONFIG
         #kubectl get nodes
