@@ -35,7 +35,8 @@ jobs:
       run: |
         curl -L $(curl -s https://api.github.com/repos/Azure/kubelogin/releases/latest | jq -r ".assets[] | select(.name | test(\"linux-amd64.zip$\")) | .browser_download_url") -o kubelogin.zip
         unzip kubelogin.zip
-        export PATH="$PATH:$(find "$(pwd)" -name kubelogin)"
+        chmod +x bin/kubelogin
+        echo "$(find "$(pwd)" -name kubelogin)" >> $GITHUB_PATH
         
     - name: kubectl stuff
       run: |
