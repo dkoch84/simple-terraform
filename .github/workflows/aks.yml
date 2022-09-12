@@ -29,10 +29,15 @@ jobs:
       uses: azure/aks-set-context@v2.0
       with:
         resource-group: ${{ env.RESOURCE_GROUP }}
-        cluster-name: ${{ env.CLUSTER_NAME }}
+        cluster-name: ${{ env.CLUSTER_NAME }}  
+        
+    - name: Install Kubelogin
+      run: |
+        curl -L $(curl -s https://api.github.com/repos/Azure/kubelogin/releases/latest | jq -r ".assets[] | select(.name | test(\"linux-amd64.zip$\")) | .browser_download_url") -o kubelogin.zip
+        unzip kubelogin.zip
+        export PATH=$PATH:$(find "$(pwd)" -name kubelogin)
         
     - name: kubectl stuff
       run: |
-        unzip
-        #kubelogin convert-kubeconfig -l azurecli
-        #kubectl get nodes
+        kubelogin convert-kubeconfig -l azurecli
+        kubectl get nodes
