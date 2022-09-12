@@ -39,5 +39,6 @@ jobs:
         
     - name: kubectl stuff
       run: |
+        echo $PATH
         kubelogin convert-kubeconfig -l azurecli
         kubectl get nodes
