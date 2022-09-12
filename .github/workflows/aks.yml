@@ -8,7 +8,7 @@ env:
   CLUSTER_NAME: "aks-dank_prime"
 
 jobs:
-  deploy:
+  kubetime:
     permissions:
       actions: read
       contents: read
@@ -32,4 +32,6 @@ jobs:
         cluster-name: ${{ env.CLUSTER_NAME }}
         
     - name: kubectl stuff
-      run: kubectl get nodes
+      run: |
+        echo $KUBELOGIN
+        #kubectl get nodes
